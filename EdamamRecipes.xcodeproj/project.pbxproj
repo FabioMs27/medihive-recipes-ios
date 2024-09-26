@@ -1,0 +1,637 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		795C53E52CA5752D00F8299A /* EdamamRecipesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795C53E42CA5752D00F8299A /* EdamamRecipesApp.swift */; };
+		795C53E72CA5752D00F8299A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795C53E62CA5752D00F8299A /* ContentView.swift */; };
+		795C53E92CA5752F00F8299A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 795C53E82CA5752F00F8299A /* Assets.xcassets */; };
+		795C53EC2CA5752F00F8299A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 795C53EB2CA5752F00F8299A /* Preview Assets.xcassets */; };
+		795C53F62CA5752F00F8299A /* EdamamRecipesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795C53F52CA5752F00F8299A /* EdamamRecipesTests.swift */; };
+		795C54002CA5752F00F8299A /* EdamamRecipesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795C53FF2CA5752F00F8299A /* EdamamRecipesUITests.swift */; };
+		795C54022CA5752F00F8299A /* EdamamRecipesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795C54012CA5752F00F8299A /* EdamamRecipesUITestsLaunchTests.swift */; };
+		79A96AA82CA5997000641C8F /* NetworkAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A96AA72CA5996F00641C8F /* NetworkAgent.swift */; };
+		79A96AAA2CA59E9300641C8F /* APIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A96AA92CA59E9300641C8F /* APIType.swift */; };
+		79A96AAC2CA5A2B200641C8F /* EdamamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A96AAB2CA5A2B200641C8F /* EdamamAPI.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		795C53F22CA5752F00F8299A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 795C53D92CA5752D00F8299A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 795C53E02CA5752D00F8299A;
+			remoteInfo = EdamamRecipes;
+		};
+		795C53FC2CA5752F00F8299A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 795C53D92CA5752D00F8299A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 795C53E02CA5752D00F8299A;
+			remoteInfo = EdamamRecipes;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		795C53E12CA5752D00F8299A /* EdamamRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdamamRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		795C53E42CA5752D00F8299A /* EdamamRecipesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamRecipesApp.swift; sourceTree = "<group>"; };
+		795C53E62CA5752D00F8299A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		795C53E82CA5752F00F8299A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		795C53EB2CA5752F00F8299A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		795C53F12CA5752F00F8299A /* EdamamRecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EdamamRecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		795C53F52CA5752F00F8299A /* EdamamRecipesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamRecipesTests.swift; sourceTree = "<group>"; };
+		795C53FB2CA5752F00F8299A /* EdamamRecipesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EdamamRecipesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		795C53FF2CA5752F00F8299A /* EdamamRecipesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamRecipesUITests.swift; sourceTree = "<group>"; };
+		795C54012CA5752F00F8299A /* EdamamRecipesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamRecipesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		79A96AA72CA5996F00641C8F /* NetworkAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAgent.swift; sourceTree = "<group>"; };
+		79A96AA92CA59E9300641C8F /* APIType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIType.swift; sourceTree = "<group>"; };
+		79A96AAB2CA5A2B200641C8F /* EdamamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamAPI.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		795C53DE2CA5752D00F8299A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		795C53EE2CA5752F00F8299A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		795C53F82CA5752F00F8299A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		795C53D82CA5752D00F8299A = {
+			isa = PBXGroup;
+			children = (
+				795C53E32CA5752D00F8299A /* EdamamRecipes */,
+				795C53F42CA5752F00F8299A /* EdamamRecipesTests */,
+				795C53FE2CA5752F00F8299A /* EdamamRecipesUITests */,
+				795C53E22CA5752D00F8299A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		795C53E22CA5752D00F8299A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				795C53E12CA5752D00F8299A /* EdamamRecipes.app */,
+				795C53F12CA5752F00F8299A /* EdamamRecipesTests.xctest */,
+				795C53FB2CA5752F00F8299A /* EdamamRecipesUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		795C53E32CA5752D00F8299A /* EdamamRecipes */ = {
+			isa = PBXGroup;
+			children = (
+				795C540E2CA5777200F8299A /* Dependencies */,
+				795C540F2CA5777B00F8299A /* Features */,
+				795C53E42CA5752D00F8299A /* EdamamRecipesApp.swift */,
+				795C54102CA577F500F8299A /* Misc */,
+				795C53E82CA5752F00F8299A /* Assets.xcassets */,
+				795C53EA2CA5752F00F8299A /* Preview Content */,
+			);
+			path = EdamamRecipes;
+			sourceTree = "<group>";
+		};
+		795C53EA2CA5752F00F8299A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				795C53EB2CA5752F00F8299A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		795C53F42CA5752F00F8299A /* EdamamRecipesTests */ = {
+			isa = PBXGroup;
+			children = (
+				795C53F52CA5752F00F8299A /* EdamamRecipesTests.swift */,
+			);
+			path = EdamamRecipesTests;
+			sourceTree = "<group>";
+		};
+		795C53FE2CA5752F00F8299A /* EdamamRecipesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				795C53FF2CA5752F00F8299A /* EdamamRecipesUITests.swift */,
+				795C54012CA5752F00F8299A /* EdamamRecipesUITestsLaunchTests.swift */,
+			);
+			path = EdamamRecipesUITests;
+			sourceTree = "<group>";
+		};
+		795C540E2CA5777200F8299A /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				79A96AA62CA5995900641C8F /* Networking */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		795C540F2CA5777B00F8299A /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				795C53E62CA5752D00F8299A /* ContentView.swift */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		795C54102CA577F500F8299A /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		79A96AA62CA5995900641C8F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				79A96AA72CA5996F00641C8F /* NetworkAgent.swift */,
+				79A96AA92CA59E9300641C8F /* APIType.swift */,
+				79A96AAB2CA5A2B200641C8F /* EdamamAPI.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		795C53E02CA5752D00F8299A /* EdamamRecipes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 795C54052CA5752F00F8299A /* Build configuration list for PBXNativeTarget "EdamamRecipes" */;
+			buildPhases = (
+				795C53DD2CA5752D00F8299A /* Sources */,
+				795C53DE2CA5752D00F8299A /* Frameworks */,
+				795C53DF2CA5752D00F8299A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EdamamRecipes;
+			productName = EdamamRecipes;
+			productReference = 795C53E12CA5752D00F8299A /* EdamamRecipes.app */;
+			productType = "com.apple.product-type.application";
+		};
+		795C53F02CA5752F00F8299A /* EdamamRecipesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 795C54082CA5752F00F8299A /* Build configuration list for PBXNativeTarget "EdamamRecipesTests" */;
+			buildPhases = (
+				795C53ED2CA5752F00F8299A /* Sources */,
+				795C53EE2CA5752F00F8299A /* Frameworks */,
+				795C53EF2CA5752F00F8299A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				795C53F32CA5752F00F8299A /* PBXTargetDependency */,
+			);
+			name = EdamamRecipesTests;
+			productName = EdamamRecipesTests;
+			productReference = 795C53F12CA5752F00F8299A /* EdamamRecipesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		795C53FA2CA5752F00F8299A /* EdamamRecipesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 795C540B2CA5752F00F8299A /* Build configuration list for PBXNativeTarget "EdamamRecipesUITests" */;
+			buildPhases = (
+				795C53F72CA5752F00F8299A /* Sources */,
+				795C53F82CA5752F00F8299A /* Frameworks */,
+				795C53F92CA5752F00F8299A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				795C53FD2CA5752F00F8299A /* PBXTargetDependency */,
+			);
+			name = EdamamRecipesUITests;
+			productName = EdamamRecipesUITests;
+			productReference = 795C53FB2CA5752F00F8299A /* EdamamRecipesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		795C53D92CA5752D00F8299A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					795C53E02CA5752D00F8299A = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					795C53F02CA5752F00F8299A = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 795C53E02CA5752D00F8299A;
+					};
+					795C53FA2CA5752F00F8299A = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 795C53E02CA5752D00F8299A;
+					};
+				};
+			};
+			buildConfigurationList = 795C53DC2CA5752D00F8299A /* Build configuration list for PBXProject "EdamamRecipes" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 795C53D82CA5752D00F8299A;
+			productRefGroup = 795C53E22CA5752D00F8299A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				795C53E02CA5752D00F8299A /* EdamamRecipes */,
+				795C53F02CA5752F00F8299A /* EdamamRecipesTests */,
+				795C53FA2CA5752F00F8299A /* EdamamRecipesUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		795C53DF2CA5752D00F8299A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				795C53EC2CA5752F00F8299A /* Preview Assets.xcassets in Resources */,
+				795C53E92CA5752F00F8299A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		795C53EF2CA5752F00F8299A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		795C53F92CA5752F00F8299A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		795C53DD2CA5752D00F8299A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79A96AAA2CA59E9300641C8F /* APIType.swift in Sources */,
+				79A96AAC2CA5A2B200641C8F /* EdamamAPI.swift in Sources */,
+				795C53E72CA5752D00F8299A /* ContentView.swift in Sources */,
+				795C53E52CA5752D00F8299A /* EdamamRecipesApp.swift in Sources */,
+				79A96AA82CA5997000641C8F /* NetworkAgent.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		795C53ED2CA5752F00F8299A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				795C53F62CA5752F00F8299A /* EdamamRecipesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		795C53F72CA5752F00F8299A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				795C54002CA5752F00F8299A /* EdamamRecipesUITests.swift in Sources */,
+				795C54022CA5752F00F8299A /* EdamamRecipesUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		795C53F32CA5752F00F8299A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 795C53E02CA5752D00F8299A /* EdamamRecipes */;
+			targetProxy = 795C53F22CA5752F00F8299A /* PBXContainerItemProxy */;
+		};
+		795C53FD2CA5752F00F8299A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 795C53E02CA5752D00F8299A /* EdamamRecipes */;
+			targetProxy = 795C53FC2CA5752F00F8299A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		795C54032CA5752F00F8299A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		795C54042CA5752F00F8299A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		795C54062CA5752F00F8299A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EdamamRecipes/Preview Content\"";
+				DEVELOPMENT_TEAM = K9D2L8Q3A8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.EdamamRecipes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		795C54072CA5752F00F8299A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"EdamamRecipes/Preview Content\"";
+				DEVELOPMENT_TEAM = K9D2L8Q3A8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.EdamamRecipes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		795C54092CA5752F00F8299A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K9D2L8Q3A8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.EdamamRecipesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EdamamRecipes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EdamamRecipes";
+			};
+			name = Debug;
+		};
+		795C540A2CA5752F00F8299A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K9D2L8Q3A8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.EdamamRecipesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EdamamRecipes.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EdamamRecipes";
+			};
+			name = Release;
+		};
+		795C540C2CA5752F00F8299A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K9D2L8Q3A8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.EdamamRecipesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EdamamRecipes;
+			};
+			name = Debug;
+		};
+		795C540D2CA5752F00F8299A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K9D2L8Q3A8;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.EdamamRecipesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EdamamRecipes;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		795C53DC2CA5752D00F8299A /* Build configuration list for PBXProject "EdamamRecipes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				795C54032CA5752F00F8299A /* Debug */,
+				795C54042CA5752F00F8299A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		795C54052CA5752F00F8299A /* Build configuration list for PBXNativeTarget "EdamamRecipes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				795C54062CA5752F00F8299A /* Debug */,
+				795C54072CA5752F00F8299A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		795C54082CA5752F00F8299A /* Build configuration list for PBXNativeTarget "EdamamRecipesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				795C54092CA5752F00F8299A /* Debug */,
+				795C540A2CA5752F00F8299A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		795C540B2CA5752F00F8299A /* Build configuration list for PBXNativeTarget "EdamamRecipesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				795C540C2CA5752F00F8299A /* Debug */,
+				795C540D2CA5752F00F8299A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 795C53D92CA5752D00F8299A /* Project object */;
+}
