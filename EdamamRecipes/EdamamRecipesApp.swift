@@ -11,7 +11,9 @@ import SwiftUI
 struct EdamamRecipesApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                RecipesView(viewModel: .init())
+            }
         }
     }
 }
