@@ -8,8 +8,9 @@
 import Foundation
 
 enum EdamamAPI {
-    case recipes(query: String, pageSize: Int)
-    case recipeDetails
+    case recipes(RecipeSearchRequest)
+    case recipeDetails(id: String)
+    case recipeSuggestions(query: String)
 }
 
 extension EdamamAPI: APIType {
@@ -18,11 +19,22 @@ extension EdamamAPI: APIType {
     }
     
     var appId: String {
-        "e203f04d"
+        switch self {
+        case .recipes, .recipeDetails:
+            return "e203f04d"
+        case .recipeSuggestions:
+            return "21a60801"
+        }
     }
     
     var appKey: String {
-        "d00752271db208c7c775cc696f6d7c28"
+        switch self {
+        case .recipes, .recipeDetails:
+            return "d00752271db208c7c775cc696f6d7c28"
+
+        case .recipeSuggestions:
+            return "8d24659d0f896a3bc5eb83d2b965ad30"
+        }
     }
     
     var components: URLComponents? {
@@ -30,6 +42,7 @@ extension EdamamAPI: APIType {
         components?.queryItems = [
             URLQueryItem(name: "app_id", value: appId),
             URLQueryItem(name: "app_key", value: appKey),
+            URLQueryItem(name: "type", value: "public"),
         ]
         components?.queryItems?.append(contentsOf: queryItems)
         components?.path = paths
@@ -46,18 +59,22 @@ extension EdamamAPI: APIType {
     }
     
     var paths: String {
-        "/api/recipes/v2"
+        switch self {
+        case .recipes, .recipeDetails:
+            return "/api/recipes/v2"
+        case .recipeSuggestions:
+            return "/auto-complete"
+        }
     }
     
     var queryItems: [URLQueryItem] {
         switch self {
-        case .recipes(let query, let pageSize):
-            return [
-                URLQueryItem(name: "q", value: query),
-                URLQueryItem(name: "type", value: "public")
-            ]
-        case .recipeDetails:
-            return []
+        case .recipes(let request):
+            return request.queryItems
+        case .recipeDetails(let id):
+            return [URLQueryItem(name: "id", value: id)]
+        case .recipeSuggestions(let query):
+            return [URLQueryItem(name: "q", value: query)]
         }
     }
 }

@@ -13,7 +13,7 @@ enum Recipes {
 
 extension Recipes.Output {
     struct Item: Identifiable, Equatable {
-        var id: UUID = .init()
+        let id: String
         let recipeName: String
         let imageUrl: URL?
         let source: String
@@ -22,12 +22,24 @@ extension Recipes.Output {
 
 // MARK: - Mapping
 extension Recipes.Output.Item {
-    init(recipeHit: Hit) {
-        let recipe = recipeHit.recipe
+    init(recipe: Recipe) {
         self.init(
+            id: recipe.id,
             recipeName: recipe.label,
-            imageUrl: recipe.image,
+            imageUrl: recipe.imageUrl,
             source: "by \(recipe.source)"
+        )
+    }
+}
+
+extension RecipeSearchRequest {
+    init(query: String, filterSettings: RecipesFilter.Settings) {
+        self = .init(
+            query: query,
+            calories: .none,
+            ingredients: .none,
+            diet: filterSettings.dietOptions.map(\.rawValue),
+            health: filterSettings.healthOptions.map(\.rawValue)
         )
     }
 }

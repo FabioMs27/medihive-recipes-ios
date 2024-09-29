@@ -7,9 +7,12 @@
 
 import Dependencies
 import SwiftUI
+import SwiftUINavigation
 
 struct RecipesView: View {
     @ObservedObject var viewModel: RecipesViewModel
+    @FocusState private var searchFocused: Bool
+    @Environment(\.dismissSearch) var dismissSearch
     
     let collumns: [GridItem] = [
         .init(spacing: 16),
@@ -18,22 +21,100 @@ struct RecipesView: View {
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: collumns, spacing: 16) {
-                ForEach(
-                    viewModel.recipeListItems,
-                    content: makeRecipeItemView
-                )
+            VStack(alignment: .leading, spacing: 20) {
+                headerView
+                switch viewModel.requestState {
+                case .inFlight:
+                    ProgressView()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                case .error(let description):
+                    Text(description)
+                        .bold()
+                        .foregroundStyle(.red)
+                case .none where viewModel.recipes.isEmpty:
+                    emptyState
+                case .none:
+                    LazyVGrid(columns: collumns, spacing: 16) {
+                        ForEach(
+                            viewModel.recipeListItems,
+                            content: makeRecipeItemView
+                        )
+                    }
+                }
             }
+            .animation(.easeIn, value: viewModel.recipes)
             .padding(.horizontal)
         }
+        .navigationTitle("Recipes")
         .searchable(
             text: $viewModel.searchQuery,
             prompt: "Find the best recipes!"
         )
-        .navigationTitle("Recipes")
-        .task {
-            await viewModel.observeSearchQuery()
+        .searchSuggestions {
+            ForEach(viewModel.suggestions, id: \.self) { suggestion in
+                Label(suggestion, systemImage: "bookmark")
+                    .searchCompletion(suggestion)
+            }
         }
+        .focused($searchFocused)
+        .submitLabel(.search)
+        .onSubmit(of: .search) {
+            searchFocused = false
+            dismissSearch()
+            viewModel.clearSuggestions()
+            Task { await viewModel.fetchRecipes() }
+        }
+        .task { await viewModel.observeSearchQuery() }
+        .task { await viewModel.fetchRecipes() }
+        .sheet(item: $viewModel.route.filterSheet) { viewModel in
+            RecipesFilterView(viewModel: viewModel)
+                .presentationDetents([.medium])
+        }
+    }
+    
+    var headerView: some View {
+        HStack {
+            Text("Search Result")
+            Spacer()
+            Button {
+                viewModel.showFilterSheet()
+            } label: {
+                Image.init(systemName: "slider.horizontal.3")
+                    .padding(8)
+                    .background(Color.green)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .foregroundStyle(Color.white)
+            }
+        }
+        .font(.title2)
+        .bold()
+
+    }
+    
+    var emptyState: some View {
+        Text(
+            """
+            We couldn't find any matches for "\(viewModel.searchQuery)"
+            Double check your search for any typos or spelling errors - or try a different search term.
+            """
+        )
+            .bold()
+            .foregroundStyle(.green)
+    }
+    
+    var gradientOverlay: some View {
+        LinearGradient(
+            gradient: Gradient(
+                stops: [
+                    .init(color: Color.black.opacity(0.1), location: 0.0),
+                    .init(color: Color.black.opacity(0.2), location: 0.6),
+                    .init(color: Color.black.opacity(0.8), location: 0.85),
+                    .init(color: Color.black, location: 1)
+                ]
+            ),
+            startPoint: UnitPoint(x: 0.5, y: 0.0),
+            endPoint: UnitPoint(x: 0.5, y: 1)
+        )
     }
     
     func makeRecipeItemView(_ recipe: Recipes.Output.Item) -> some View {
@@ -51,7 +132,6 @@ struct RecipesView: View {
                     Color.gray.opacity(0.3)
                 }
             }
-            .scaleEffect(1)
             .aspectRatio(contentMode: .fit)
             .overlay(gradientOverlay)
             
@@ -70,37 +150,33 @@ struct RecipesView: View {
         }
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
-    
-    var gradientOverlay: some View {
-        LinearGradient(
-            gradient: Gradient(
-                stops: [
-                    .init(color: Color.black.opacity(0.1), location: 0.0),
-                    .init(color: Color.black.opacity(0.2), location: 0.6),
-                    .init(color: Color.black.opacity(0.8), location: 0.85),
-                    .init(color: Color.black, location: 1)
-                ]
-            ),
-            startPoint: UnitPoint(x: 0.5, y: 0.0),
-            endPoint: UnitPoint(x: 0.5, y: 1)
+}
+
+#Preview("Recipes List") {
+    NavigationStack {
+        RecipesView(viewModel: .init())
+    }
+}
+
+#Preview("Error State") {
+    NavigationStack {
+        RecipesView(
+            viewModel: withDependencies {
+                $0.apiClient.fetchRecipes = { _ in
+                    throw NSError(domain: "Test", code: 500)
+                }
+            } operation: {
+                .init()
+            }
         )
     }
 }
 
-#Preview {
+#Preview("Empty State") {
     NavigationStack {
         RecipesView(
             viewModel: withDependencies {
-                $0.networkClient.fetchRecipes = { _, _ in
-                    RecipesResponse.init(
-                        from: 0,
-                        to: 10,
-                        count: 100,
-                        hits: (0...10).map { _ in
-                                .init(recipe: .mock, bookmarked: .random())
-                        }
-                    )
-                }
+                $0.apiClient.fetchRecipes = { _ in [] }
             } operation: {
                 .init()
             }
