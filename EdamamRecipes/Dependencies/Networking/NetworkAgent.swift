@@ -32,3 +32,9 @@ struct NetworkAgent {
         return try decoder.decode(Response.self, from: data)
     }
 }
+
+extension NetworkAgent {
+    func run<Response: Decodable>(_ apiType: APIType) async throws -> Response {
+        try await run(url: apiType.urlRequest?.url)
+    }
+}
