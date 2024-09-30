@@ -7,38 +7,70 @@
 
 import Foundation
 
-struct RecipesResponse: Codable {
-    let from: Int
-    let to: Int
-    let count: Int
-    var hits: [Hit] = []
-}
-
-struct Hit: Codable {
-    let recipe: Recipe
-    var bookmarked: Bool? = false
-}
-
 // MARK: - Recipe
-struct Recipe: Codable {
-    let uri: String
+struct Recipe: Codable, Identifiable, Equatable {
+    let id: String
     let label: String
-    let image: URL?
+    let imageUrl: URL?
     let source: String
-    let yield: Double
-    let ingredientLines: [String]
     let calories: Double
+    let details: Details?
+}
+
+extension Recipe {
+    struct Details: Codable, Equatable {
+        let ingredients: [String]
+        let nutrition: Nutrition
+    }
+    
+    struct Nutrition: Codable, Equatable {
+        let calories: Double
+        let glycemicIndex: Double?
+        let inflammatoryIndex: Double?
+        let totalCO2Emissions: Double?
+        let totalWeight: Double
+        let dietLabels, healthLabels: [String]
+    }
 }
 
 // MARK: - Mock
 extension Recipe {
+    static func mock(
+        id: String = "4249d92069034f7f8c6f33039ac45f02",
+        details: Details? = .none
+    ) -> Self {
+        Self.init(
+            id: id,
+            label: "Arugula, Peach & Goat Cheese Salad with Cherry Dressing",
+            imageUrl: .none,
+            source: "Food52",
+            calories: 779,
+            details: details
+        )
+    }
+}
+
+extension Recipe.Details {
     static let mock = Self.init(
-        uri: "http://www.edamam.com/ontologies/edamam.owl#recipe_4249d92069034f7f8c6f33039ac45f02",
-        label: "Arugula, Peach & Goat Cheese Salad with Cherry Dressing",
-        image: .none,
-        source: "Food52",
-        yield: 4.0,
-        ingredientLines: ["For the dressing:", "1/2 cup fresh or frozen cherries", "2 tablespoons water", "2 tablespoons mild flavored olive oil", "1 tablespoon lemon juice", "salt and pepper to taste", "For the salad:"],
-        calories: 779
+        ingredients: [
+            "3 tablespoons frozen passion fruit juice concentrate, thawed",
+            "3 tablespoons minced shallot",
+            "4 teaspoons Sherry wine vinegar",
+            "1 teaspoon Dijon mustard",
+            "1 teaspoon whole coriander seeds, coarsely cracked",
+            "3 tablespoons olive oil",
+            "8 cups herb salad mix (about 4 ounces)",
+            "1 large ripe mango, halved, pitted, peeled, sliced",
+            "2 small avocados, halved, pitted, peeled, sliced",
+        ],
+        nutrition: .init(
+            calories: 293,
+            glycemicIndex: 15,
+            inflammatoryIndex: 2,
+            totalCO2Emissions: 2,
+            totalWeight: 55,
+            dietLabels: RecipesFilter.Settings.DietOptions.allCases.map(\.rawValue),
+            healthLabels: RecipesFilter.Settings.HealthOptions.allCases.map(\.rawValue)
+        )
     )
 }

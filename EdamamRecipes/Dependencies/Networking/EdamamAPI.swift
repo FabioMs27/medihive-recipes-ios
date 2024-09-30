@@ -8,8 +8,9 @@
 import Foundation
 
 enum EdamamAPI {
-    case recipes(query: String, pageSize: Int)
-    case recipeDetails
+    case recipes(RecipeSearchRequest)
+    case recipeDetails(id: String)
+    case recipeSuggestions(query: String)
 }
 
 extension EdamamAPI: APIType {
@@ -18,11 +19,22 @@ extension EdamamAPI: APIType {
     }
     
     var appId: String {
-        "e203f04d"
+        switch self {
+        case .recipes, .recipeDetails:
+            return "e203f04d"
+        case .recipeSuggestions:
+            return "21a60801"
+        }
     }
     
     var appKey: String {
-        "d00752271db208c7c775cc696f6d7c28"
+        switch self {
+        case .recipes, .recipeDetails:
+            return "d00752271db208c7c775cc696f6d7c28"
+
+        case .recipeSuggestions:
+            return "8d24659d0f896a3bc5eb83d2b965ad30"
+        }
     }
     
     var components: URLComponents? {
@@ -46,18 +58,24 @@ extension EdamamAPI: APIType {
     }
     
     var paths: String {
-        "/api/recipes/v2"
+        switch self {
+        case .recipes:
+            return "/api/recipes/v2"
+        case .recipeDetails(let id):
+            return "/api/recipes/v2/\(id)"
+        case .recipeSuggestions:
+            return "/auto-complete"
+        }
     }
     
     var queryItems: [URLQueryItem] {
         switch self {
-        case .recipes(let query, let pageSize):
-            return [
-                URLQueryItem(name: "q", value: query),
-                URLQueryItem(name: "type", value: "public")
-            ]
+        case .recipes(let request):
+            return request.queryItems + [URLQueryItem(name: "type", value: "public")]
         case .recipeDetails:
-            return []
+            return [URLQueryItem(name: "type", value: "public")]
+        case .recipeSuggestions(let query):
+            return [URLQueryItem(name: "q", value: query)]
         }
     }
 }

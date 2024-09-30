@@ -7,9 +7,14 @@
 
 import Dependencies
 import SwiftUI
+import SwiftUINavigation
 
 struct RecipesView: View {
     @ObservedObject var viewModel: RecipesViewModel
+    @FocusState private var searchFocused: Bool
+    @Environment(\.dismissSearch) var dismissSearch
+    @Environment(\.isSearching) var isSearching
+    @State var isPresentingSearch = false
     
     let collumns: [GridItem] = [
         .init(spacing: 16),
@@ -18,57 +23,94 @@ struct RecipesView: View {
     
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: collumns, spacing: 16) {
-                ForEach(
-                    viewModel.recipeListItems,
-                    content: makeRecipeItemView
-                )
-            }
-            .padding(.horizontal)
-        }
-        .searchable(
-            text: $viewModel.searchQuery,
-            prompt: "Find the best recipes!"
-        )
-        .navigationTitle("Recipes")
-        .task {
-            await viewModel.observeSearchQuery()
-        }
-    }
-    
-    func makeRecipeItemView(_ recipe: Recipes.Output.Item) -> some View {
-        ZStack(alignment: .bottomLeading) {
-            AsyncImage(
-                url: recipe.imageUrl,
-                transaction: Transaction(animation: .easeInOut)
-            ) { phase in
-                switch phase {
-                case .empty, .failure:
-                    Color.gray.opacity(0.3)
-                case .success(let image):
-                    image.resizable()
-                @unknown default:
-                    Color.gray.opacity(0.3)
+            VStack(alignment: .leading, spacing: 20) {
+                headerView
+                switch viewModel.requestState {
+                case .inFlight:
+                    ProgressView()
+                        .frame(maxWidth: .infinity, alignment: .center)
+                case .error(let description):
+                    Text(description)
+                        .bold()
+                        .foregroundStyle(.red)
+                case .none where viewModel.recipes.isEmpty:
+                    emptyState
+                case .none:
+                    LazyVGrid(columns: collumns, spacing: 16) {
+                        ForEach(
+                            viewModel.recipeListItems,
+                            content: makeRecipeItemView
+                        )
+                    }
                 }
             }
-            .scaleEffect(1)
-            .aspectRatio(contentMode: .fit)
-            .overlay(gradientOverlay)
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text(recipe.recipeName)
-                    .bold()
-                    .font(.caption)
-                    .foregroundStyle(.white)
-                    .lineLimit(2, reservesSpace: true)
-                
-                Text(recipe.source)
-                    .font(.caption2)
-                    .foregroundColor(.gray)
-            }
-            .padding(10)
+            .animation(.easeIn, value: viewModel.recipes)
+            .animation(.easeIn, value: viewModel.requestState)
+            .padding(.horizontal)
         }
-        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .navigationTitle("Recipes")
+        .searchable(
+            text: $viewModel.searchQuery,
+            isPresented: $isPresentingSearch,
+            prompt: "Find the best recipes!"
+        )
+        .focused($searchFocused)
+        .searchSuggestions {
+            ForEach(viewModel.suggestions, id: \.self) { suggestion in
+                Label(suggestion, systemImage: "bookmark")
+                    .searchCompletion(suggestion)
+            }
+        }
+        .submitLabel(.search)
+        .onSubmit(of: .search) {
+            searchFocused = false
+            isPresentingSearch = false
+            dismissSearch()
+            hideKeyboard()
+            viewModel.clearSuggestions()
+            Task { await viewModel.fetchRecipes() }
+        }
+        .task { await viewModel.observeSearchQuery() }
+        .task { await viewModel.fetchRecipes() }
+        // MARK: - Navigation
+        .sheet(item: $viewModel.route.filterSheet) { viewModel in
+            RecipesFilterView(viewModel: viewModel)
+                .presentationDetents([.medium])
+        }
+        .navigationDestination(
+            item: $viewModel.route.recipeDetails,
+            destination: RecipeDetailsView.init
+        )
+    }
+    
+    var headerView: some View {
+        HStack {
+            Text("Search Result")
+            Spacer()
+            Button {
+                viewModel.showFilterSheet()
+            } label: {
+                Image.init(systemName: "slider.horizontal.3")
+                    .padding(8)
+                    .background(Color.green)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .foregroundStyle(Color.white)
+            }
+        }
+        .font(.title2)
+        .bold()
+
+    }
+    
+    var emptyState: some View {
+        Text(
+            """
+            We couldn't find any matches for "\(viewModel.searchQuery)"
+            Double check your search for any typos or spelling errors - or try a different search term.
+            """
+        )
+            .bold()
+            .foregroundStyle(.green)
     }
     
     var gradientOverlay: some View {
@@ -85,21 +127,59 @@ struct RecipesView: View {
             endPoint: UnitPoint(x: 0.5, y: 1)
         )
     }
+    
+    func makeRecipeItemView(_ recipe: Recipes.Output.Item) -> some View {
+        Button {
+            viewModel.showRecipeDetailsScreen(from: recipe.id)
+        } label: {
+            ZStack(alignment: .bottomLeading) {
+                AsyncImage(
+                    url: recipe.imageUrl,
+                    transaction: Transaction(animation: .easeInOut)
+                ) { phase in
+                    switch phase {
+                    case .empty, .failure:
+                        Color.gray.opacity(0.3)
+                    case .success(let image):
+                        image.resizable()
+                    @unknown default:
+                        Color.gray.opacity(0.3)
+                    }
+                }
+                .aspectRatio(contentMode: .fit)
+                .overlay(gradientOverlay)
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(recipe.recipeName)
+                        .bold()
+                        .font(.caption)
+                        .foregroundStyle(.white)
+                        .lineLimit(2, reservesSpace: true)
+                    
+                    Text(recipe.source)
+                        .font(.caption2)
+                        .foregroundColor(.gray)
+                }
+                .multilineTextAlignment(.leading)
+                .padding(10)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
+    }
 }
 
-#Preview {
+#Preview("Recipes List") {
+    NavigationStack {
+        RecipesView(viewModel: .init())
+    }
+}
+
+#Preview("Error State") {
     NavigationStack {
         RecipesView(
             viewModel: withDependencies {
-                $0.networkClient.fetchRecipes = { _, _ in
-                    RecipesResponse.init(
-                        from: 0,
-                        to: 10,
-                        count: 100,
-                        hits: (0...10).map { _ in
-                                .init(recipe: .mock, bookmarked: .random())
-                        }
-                    )
+                $0.apiClient.fetchRecipes = { _ in
+                    throw NSError(domain: "Test", code: 500)
                 }
             } operation: {
                 .init()
@@ -107,3 +187,23 @@ struct RecipesView: View {
         )
     }
 }
+
+#Preview("Empty State") {
+    NavigationStack {
+        RecipesView(
+            viewModel: withDependencies {
+                $0.apiClient.fetchRecipes = { _ in [] }
+            } operation: {
+                .init()
+            }
+        )
+    }
+}
+
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif

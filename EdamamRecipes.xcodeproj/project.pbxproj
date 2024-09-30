@@ -11,30 +11,37 @@
 		795C53E92CA5752F00F8299A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 795C53E82CA5752F00F8299A /* Assets.xcassets */; };
 		795C53EC2CA5752F00F8299A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 795C53EB2CA5752F00F8299A /* Preview Assets.xcassets */; };
 		795C53F62CA5752F00F8299A /* RecipesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795C53F52CA5752F00F8299A /* RecipesViewModelTests.swift */; };
-		795C54002CA5752F00F8299A /* EdamamRecipesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795C53FF2CA5752F00F8299A /* EdamamRecipesUITests.swift */; };
-		795C54022CA5752F00F8299A /* EdamamRecipesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795C54012CA5752F00F8299A /* EdamamRecipesUITestsLaunchTests.swift */; };
 		79A96AA82CA5997000641C8F /* NetworkAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A96AA72CA5996F00641C8F /* NetworkAgent.swift */; };
 		79A96AAA2CA59E9300641C8F /* APIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A96AA92CA59E9300641C8F /* APIType.swift */; };
 		79A96AAC2CA5A2B200641C8F /* EdamamAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A96AAB2CA5A2B200641C8F /* EdamamAPI.swift */; };
 		79A96AAF2CA5C5E200641C8F /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A96AAE2CA5C5E200641C8F /* Recipe.swift */; };
-		79A96AB12CA5C76C00641C8F /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A96AB02CA5C76C00641C8F /* NetworkClient.swift */; };
+		79A96AB12CA5C76C00641C8F /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A96AB02CA5C76C00641C8F /* ApiClient.swift */; };
 		79A96AB52CA5CA7F00641C8F /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 79A96AB42CA5CA7F00641C8F /* Dependencies */; };
-		79A96ABA2CA5CD4900641C8F /* MockNetworkClient+Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A96AB92CA5CD4900641C8F /* MockNetworkClient+Dependencies.swift */; };
+		79A96ABA2CA5CD4900641C8F /* MockApiClient+Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A96AB92CA5CD4900641C8F /* MockApiClient+Dependencies.swift */; };
 		79A96ABD2CA5CFDB00641C8F /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A96ABC2CA5CFDB00641C8F /* RecipesViewModel.swift */; };
 		79A96ABF2CA5D9BC00641C8F /* RecipesModals+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A96ABE2CA5D9BC00641C8F /* RecipesModals+Mapping.swift */; };
 		79A96AC12CA5DC2400641C8F /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A96AC02CA5DC2400641C8F /* RecipesView.swift */; };
-		79A96AC32CA9626000641C8F /* Dependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 79A96AC22CA9626000641C8F /* Dependencies */; };
+		79FDB49C2CA9946A0037FCC2 /* RecipeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDB49B2CA9946A0037FCC2 /* RecipeDto.swift */; };
+		79FDB4A12CA998F30037FCC2 /* RecipeSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDB4A02CA998F30037FCC2 /* RecipeSearchRequest.swift */; };
+		79FDB4A52CA9ACA40037FCC2 /* ModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDB4A42CA9ACA40037FCC2 /* ModelsTests.swift */; };
+		79FDB4A72CA9B0460037FCC2 /* RecipeDetailsDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDB4A62CA9B0460037FCC2 /* RecipeDetailsDto.swift */; };
+		79FDB4A92CA9CA290037FCC2 /* URLQueryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDB4A82CA9CA290037FCC2 /* URLQueryItem.swift */; };
+		79FDB4B02CA9EF930037FCC2 /* RecipesFilterModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDB4AF2CA9EF930037FCC2 /* RecipesFilterModels.swift */; };
+		79FDB4B22CA9F2460037FCC2 /* RecipesFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDB4B12CA9F2460037FCC2 /* RecipesFilterViewModel.swift */; };
+		79FDB4B42CA9F46B0037FCC2 /* RecipesFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDB4B32CA9F46B0037FCC2 /* RecipesFilterView.swift */; };
+		79FDB4B72CAA0B430037FCC2 /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 79FDB4B62CAA0B430037FCC2 /* SwiftUINavigation */; };
+		79FDB4BA2CAA8CC30037FCC2 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 79FDB4B92CAA8CC30037FCC2 /* SnapshotTesting */; };
+		79FDB4BC2CAA8CE20037FCC2 /* RecipesViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDB4BB2CAA8CE20037FCC2 /* RecipesViewUITests.swift */; };
+		79FDB4C22CAA8FC10037FCC2 /* testDisplayingRecipeList.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 79FDB4BD2CAA8FC10037FCC2 /* testDisplayingRecipeList.1.png */; };
+		79FDB4C32CAA8FC10037FCC2 /* testRecipesView_EmptyState.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 79FDB4BE2CAA8FC10037FCC2 /* testRecipesView_EmptyState.1.png */; };
+		79FDB4C42CAA8FC10037FCC2 /* testRecipesView_ErrorState.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 79FDB4BF2CAA8FC10037FCC2 /* testRecipesView_ErrorState.1.png */; };
+		79FDB4C92CAA9AB90037FCC2 /* RecipeDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDB4C82CAA9AB90037FCC2 /* RecipeDetailsViewModel.swift */; };
+		79FDB4CB2CAA9FA40037FCC2 /* RecipeDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDB4CA2CAA9FA40037FCC2 /* RecipeDetailsModels.swift */; };
+		79FDB4CD2CAAA28C0037FCC2 /* RecipeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDB4CC2CAAA28C0037FCC2 /* RecipeDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		795C53F22CA5752F00F8299A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 795C53D92CA5752D00F8299A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 795C53E02CA5752D00F8299A;
-			remoteInfo = EdamamRecipes;
-		};
-		795C53FC2CA5752F00F8299A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 795C53D92CA5752D00F8299A /* Project object */;
 			proxyType = 1;
@@ -50,18 +57,30 @@
 		795C53EB2CA5752F00F8299A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		795C53F12CA5752F00F8299A /* EdamamRecipesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EdamamRecipesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		795C53F52CA5752F00F8299A /* RecipesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewModelTests.swift; sourceTree = "<group>"; };
-		795C53FB2CA5752F00F8299A /* EdamamRecipesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EdamamRecipesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		795C53FF2CA5752F00F8299A /* EdamamRecipesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamRecipesUITests.swift; sourceTree = "<group>"; };
-		795C54012CA5752F00F8299A /* EdamamRecipesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamRecipesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		79A96AA72CA5996F00641C8F /* NetworkAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAgent.swift; sourceTree = "<group>"; };
 		79A96AA92CA59E9300641C8F /* APIType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIType.swift; sourceTree = "<group>"; };
 		79A96AAB2CA5A2B200641C8F /* EdamamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdamamAPI.swift; sourceTree = "<group>"; };
 		79A96AAE2CA5C5E200641C8F /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
-		79A96AB02CA5C76C00641C8F /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
-		79A96AB92CA5CD4900641C8F /* MockNetworkClient+Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MockNetworkClient+Dependencies.swift"; sourceTree = "<group>"; };
+		79A96AB02CA5C76C00641C8F /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
+		79A96AB92CA5CD4900641C8F /* MockApiClient+Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MockApiClient+Dependencies.swift"; sourceTree = "<group>"; };
 		79A96ABC2CA5CFDB00641C8F /* RecipesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewModel.swift; sourceTree = "<group>"; };
 		79A96ABE2CA5D9BC00641C8F /* RecipesModals+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecipesModals+Mapping.swift"; sourceTree = "<group>"; };
 		79A96AC02CA5DC2400641C8F /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
+		79FDB49B2CA9946A0037FCC2 /* RecipeDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDto.swift; sourceTree = "<group>"; };
+		79FDB4A02CA998F30037FCC2 /* RecipeSearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeSearchRequest.swift; sourceTree = "<group>"; };
+		79FDB4A42CA9ACA40037FCC2 /* ModelsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsTests.swift; sourceTree = "<group>"; };
+		79FDB4A62CA9B0460037FCC2 /* RecipeDetailsDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsDto.swift; sourceTree = "<group>"; };
+		79FDB4A82CA9CA290037FCC2 /* URLQueryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryItem.swift; sourceTree = "<group>"; };
+		79FDB4AF2CA9EF930037FCC2 /* RecipesFilterModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesFilterModels.swift; sourceTree = "<group>"; };
+		79FDB4B12CA9F2460037FCC2 /* RecipesFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesFilterViewModel.swift; sourceTree = "<group>"; };
+		79FDB4B32CA9F46B0037FCC2 /* RecipesFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesFilterView.swift; sourceTree = "<group>"; };
+		79FDB4BB2CAA8CE20037FCC2 /* RecipesViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewUITests.swift; sourceTree = "<group>"; };
+		79FDB4BD2CAA8FC10037FCC2 /* testDisplayingRecipeList.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testDisplayingRecipeList.1.png; sourceTree = "<group>"; };
+		79FDB4BE2CAA8FC10037FCC2 /* testRecipesView_EmptyState.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testRecipesView_EmptyState.1.png; sourceTree = "<group>"; };
+		79FDB4BF2CAA8FC10037FCC2 /* testRecipesView_ErrorState.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testRecipesView_ErrorState.1.png; sourceTree = "<group>"; };
+		79FDB4C82CAA9AB90037FCC2 /* RecipeDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsViewModel.swift; sourceTree = "<group>"; };
+		79FDB4CA2CAA9FA40037FCC2 /* RecipeDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsModels.swift; sourceTree = "<group>"; };
+		79FDB4CC2CAAA28C0037FCC2 /* RecipeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79FDB4B72CAA0B430037FCC2 /* SwiftUINavigation in Frameworks */,
 				79A96AB52CA5CA7F00641C8F /* Dependencies in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,14 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		795C53F82CA5752F00F8299A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				79A96AC32CA9626000641C8F /* Dependencies in Frameworks */,
+				79FDB4BA2CAA8CC30037FCC2 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +109,6 @@
 			children = (
 				795C53E32CA5752D00F8299A /* EdamamRecipes */,
 				795C53F42CA5752F00F8299A /* EdamamRecipesTests */,
-				795C53FE2CA5752F00F8299A /* EdamamRecipesUITests */,
 				795C53E22CA5752D00F8299A /* Products */,
 				79A96AB32CA5CA7F00641C8F /* Frameworks */,
 			);
@@ -107,7 +119,6 @@
 			children = (
 				795C53E12CA5752D00F8299A /* EdamamRecipes.app */,
 				795C53F12CA5752F00F8299A /* EdamamRecipesTests.xctest */,
-				795C53FB2CA5752F00F8299A /* EdamamRecipesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,18 +147,12 @@
 		795C53F42CA5752F00F8299A /* EdamamRecipesTests */ = {
 			isa = PBXGroup;
 			children = (
+				79FDB4C12CAA8FC10037FCC2 /* __Snapshots__ */,
 				795C53F52CA5752F00F8299A /* RecipesViewModelTests.swift */,
+				79FDB4A42CA9ACA40037FCC2 /* ModelsTests.swift */,
+				79FDB4BB2CAA8CE20037FCC2 /* RecipesViewUITests.swift */,
 			);
 			path = EdamamRecipesTests;
-			sourceTree = "<group>";
-		};
-		795C53FE2CA5752F00F8299A /* EdamamRecipesUITests */ = {
-			isa = PBXGroup;
-			children = (
-				795C53FF2CA5752F00F8299A /* EdamamRecipesUITests.swift */,
-				795C54012CA5752F00F8299A /* EdamamRecipesUITestsLaunchTests.swift */,
-			);
-			path = EdamamRecipesUITests;
 			sourceTree = "<group>";
 		};
 		795C540E2CA5777200F8299A /* Dependencies */ = {
@@ -162,6 +167,8 @@
 		795C540F2CA5777B00F8299A /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				79FDB4C72CAA965D0037FCC2 /* RecipeDetails */,
+				79FDB4AE2CA9EF4C0037FCC2 /* RecipesFilter */,
 				79A96ABB2CA5CFB900641C8F /* Recipes */,
 			);
 			path = Features;
@@ -170,6 +177,7 @@
 		795C54102CA577F500F8299A /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				79FDB4A82CA9CA290037FCC2 /* URLQueryItem.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -177,7 +185,9 @@
 		79A96AA62CA5995900641C8F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				79A96AB62CA5CD2B00641C8F /* NetworkClient */,
+				79FDB49F2CA998D90037FCC2 /* RequestModels */,
+				79FDB49A2CA994480037FCC2 /* Dtos */,
+				79A96AB62CA5CD2B00641C8F /* ApiClient */,
 				79A96AA72CA5996F00641C8F /* NetworkAgent.swift */,
 				79A96AA92CA59E9300641C8F /* APIType.swift */,
 				79A96AAB2CA5A2B200641C8F /* EdamamAPI.swift */,
@@ -200,13 +210,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		79A96AB62CA5CD2B00641C8F /* NetworkClient */ = {
+		79A96AB62CA5CD2B00641C8F /* ApiClient */ = {
 			isa = PBXGroup;
 			children = (
-				79A96AB02CA5C76C00641C8F /* NetworkClient.swift */,
-				79A96AB92CA5CD4900641C8F /* MockNetworkClient+Dependencies.swift */,
+				79A96AB02CA5C76C00641C8F /* ApiClient.swift */,
+				79A96AB92CA5CD4900641C8F /* MockApiClient+Dependencies.swift */,
 			);
-			path = NetworkClient;
+			path = ApiClient;
 			sourceTree = "<group>";
 		};
 		79A96ABB2CA5CFB900641C8F /* Recipes */ = {
@@ -217,6 +227,61 @@
 				79A96AC02CA5DC2400641C8F /* RecipesView.swift */,
 			);
 			path = Recipes;
+			sourceTree = "<group>";
+		};
+		79FDB49A2CA994480037FCC2 /* Dtos */ = {
+			isa = PBXGroup;
+			children = (
+				79FDB49B2CA9946A0037FCC2 /* RecipeDto.swift */,
+				79FDB4A62CA9B0460037FCC2 /* RecipeDetailsDto.swift */,
+			);
+			path = Dtos;
+			sourceTree = "<group>";
+		};
+		79FDB49F2CA998D90037FCC2 /* RequestModels */ = {
+			isa = PBXGroup;
+			children = (
+				79FDB4A02CA998F30037FCC2 /* RecipeSearchRequest.swift */,
+			);
+			path = RequestModels;
+			sourceTree = "<group>";
+		};
+		79FDB4AE2CA9EF4C0037FCC2 /* RecipesFilter */ = {
+			isa = PBXGroup;
+			children = (
+				79FDB4AF2CA9EF930037FCC2 /* RecipesFilterModels.swift */,
+				79FDB4B12CA9F2460037FCC2 /* RecipesFilterViewModel.swift */,
+				79FDB4B32CA9F46B0037FCC2 /* RecipesFilterView.swift */,
+			);
+			path = RecipesFilter;
+			sourceTree = "<group>";
+		};
+		79FDB4C02CAA8FC10037FCC2 /* RecipesViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				79FDB4BD2CAA8FC10037FCC2 /* testDisplayingRecipeList.1.png */,
+				79FDB4BE2CAA8FC10037FCC2 /* testRecipesView_EmptyState.1.png */,
+				79FDB4BF2CAA8FC10037FCC2 /* testRecipesView_ErrorState.1.png */,
+			);
+			path = RecipesViewUITests;
+			sourceTree = "<group>";
+		};
+		79FDB4C12CAA8FC10037FCC2 /* __Snapshots__ */ = {
+			isa = PBXGroup;
+			children = (
+				79FDB4C02CAA8FC10037FCC2 /* RecipesViewUITests */,
+			);
+			path = __Snapshots__;
+			sourceTree = "<group>";
+		};
+		79FDB4C72CAA965D0037FCC2 /* RecipeDetails */ = {
+			isa = PBXGroup;
+			children = (
+				79FDB4C82CAA9AB90037FCC2 /* RecipeDetailsViewModel.swift */,
+				79FDB4CA2CAA9FA40037FCC2 /* RecipeDetailsModels.swift */,
+				79FDB4CC2CAAA28C0037FCC2 /* RecipeDetailsView.swift */,
+			);
+			path = RecipeDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +302,7 @@
 			name = EdamamRecipes;
 			packageProductDependencies = (
 				79A96AB42CA5CA7F00641C8F /* Dependencies */,
+				79FDB4B62CAA0B430037FCC2 /* SwiftUINavigation */,
 			);
 			productName = EdamamRecipes;
 			productReference = 795C53E12CA5752D00F8299A /* EdamamRecipes.app */;
@@ -257,31 +323,11 @@
 			);
 			name = EdamamRecipesTests;
 			packageProductDependencies = (
+				79FDB4B92CAA8CC30037FCC2 /* SnapshotTesting */,
 			);
 			productName = EdamamRecipesTests;
 			productReference = 795C53F12CA5752F00F8299A /* EdamamRecipesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		795C53FA2CA5752F00F8299A /* EdamamRecipesUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 795C540B2CA5752F00F8299A /* Build configuration list for PBXNativeTarget "EdamamRecipesUITests" */;
-			buildPhases = (
-				795C53F72CA5752F00F8299A /* Sources */,
-				795C53F82CA5752F00F8299A /* Frameworks */,
-				795C53F92CA5752F00F8299A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				795C53FD2CA5752F00F8299A /* PBXTargetDependency */,
-			);
-			name = EdamamRecipesUITests;
-			packageProductDependencies = (
-				79A96AC22CA9626000641C8F /* Dependencies */,
-			);
-			productName = EdamamRecipesUITests;
-			productReference = 795C53FB2CA5752F00F8299A /* EdamamRecipesUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -300,10 +346,6 @@
 						CreatedOnToolsVersion = 15.3;
 						TestTargetID = 795C53E02CA5752D00F8299A;
 					};
-					795C53FA2CA5752F00F8299A = {
-						CreatedOnToolsVersion = 15.3;
-						TestTargetID = 795C53E02CA5752D00F8299A;
-					};
 				};
 			};
 			buildConfigurationList = 795C53DC2CA5752D00F8299A /* Build configuration list for PBXProject "EdamamRecipes" */;
@@ -317,6 +359,8 @@
 			mainGroup = 795C53D82CA5752D00F8299A;
 			packageReferences = (
 				79A96AB22CA5C9A300641C8F /* XCRemoteSwiftPackageReference "swift-dependencies" */,
+				79FDB4B52CAA0B370037FCC2 /* XCRemoteSwiftPackageReference "swift-navigation" */,
+				79FDB4B82CAA8CBB0037FCC2 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = 795C53E22CA5752D00F8299A /* Products */;
 			projectDirPath = "";
@@ -324,7 +368,6 @@
 			targets = (
 				795C53E02CA5752D00F8299A /* EdamamRecipes */,
 				795C53F02CA5752F00F8299A /* EdamamRecipesTests */,
-				795C53FA2CA5752F00F8299A /* EdamamRecipesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -343,13 +386,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		795C53F92CA5752F00F8299A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				79FDB4C32CAA8FC10037FCC2 /* testRecipesView_EmptyState.1.png in Resources */,
+				79FDB4C22CAA8FC10037FCC2 /* testDisplayingRecipeList.1.png in Resources */,
+				79FDB4C42CAA8FC10037FCC2 /* testRecipesView_ErrorState.1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,16 +399,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79A96ABA2CA5CD4900641C8F /* MockNetworkClient+Dependencies.swift in Sources */,
+				79A96ABA2CA5CD4900641C8F /* MockApiClient+Dependencies.swift in Sources */,
 				79A96ABF2CA5D9BC00641C8F /* RecipesModals+Mapping.swift in Sources */,
-				79A96AB12CA5C76C00641C8F /* NetworkClient.swift in Sources */,
+				79FDB49C2CA9946A0037FCC2 /* RecipeDto.swift in Sources */,
+				79A96AB12CA5C76C00641C8F /* ApiClient.swift in Sources */,
+				79FDB4B22CA9F2460037FCC2 /* RecipesFilterViewModel.swift in Sources */,
 				79A96AAA2CA59E9300641C8F /* APIType.swift in Sources */,
+				79FDB4B02CA9EF930037FCC2 /* RecipesFilterModels.swift in Sources */,
+				79FDB4CD2CAAA28C0037FCC2 /* RecipeDetailsView.swift in Sources */,
 				79A96AAC2CA5A2B200641C8F /* EdamamAPI.swift in Sources */,
 				79A96AAF2CA5C5E200641C8F /* Recipe.swift in Sources */,
 				79A96ABD2CA5CFDB00641C8F /* RecipesViewModel.swift in Sources */,
+				79FDB4CB2CAA9FA40037FCC2 /* RecipeDetailsModels.swift in Sources */,
 				795C53E52CA5752D00F8299A /* EdamamRecipesApp.swift in Sources */,
+				79FDB4A92CA9CA290037FCC2 /* URLQueryItem.swift in Sources */,
+				79FDB4A72CA9B0460037FCC2 /* RecipeDetailsDto.swift in Sources */,
+				79FDB4C92CAA9AB90037FCC2 /* RecipeDetailsViewModel.swift in Sources */,
 				79A96AC12CA5DC2400641C8F /* RecipesView.swift in Sources */,
+				79FDB4B42CA9F46B0037FCC2 /* RecipesFilterView.swift in Sources */,
 				79A96AA82CA5997000641C8F /* NetworkAgent.swift in Sources */,
+				79FDB4A12CA998F30037FCC2 /* RecipeSearchRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,16 +426,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79FDB4BC2CAA8CE20037FCC2 /* RecipesViewUITests.swift in Sources */,
 				795C53F62CA5752F00F8299A /* RecipesViewModelTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		795C53F72CA5752F00F8299A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				795C54002CA5752F00F8299A /* EdamamRecipesUITests.swift in Sources */,
-				795C54022CA5752F00F8299A /* EdamamRecipesUITestsLaunchTests.swift in Sources */,
+				79FDB4A52CA9ACA40037FCC2 /* ModelsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,11 +439,6 @@
 			isa = PBXTargetDependency;
 			target = 795C53E02CA5752D00F8299A /* EdamamRecipes */;
 			targetProxy = 795C53F22CA5752F00F8299A /* PBXContainerItemProxy */;
-		};
-		795C53FD2CA5752F00F8299A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 795C53E02CA5752D00F8299A /* EdamamRecipes */;
-			targetProxy = 795C53FC2CA5752F00F8299A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -623,42 +660,6 @@
 			};
 			name = Release;
 		};
-		795C540C2CA5752F00F8299A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K9D2L8Q3A8;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.EdamamRecipesUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = EdamamRecipes;
-			};
-			name = Debug;
-		};
-		795C540D2CA5752F00F8299A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = K9D2L8Q3A8;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.EdamamRecipesUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = EdamamRecipes;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -689,15 +690,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		795C540B2CA5752F00F8299A /* Build configuration list for PBXNativeTarget "EdamamRecipesUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				795C540C2CA5752F00F8299A /* Debug */,
-				795C540D2CA5752F00F8299A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -709,6 +701,22 @@
 				version = 1.4.1;
 			};
 		};
+		79FDB4B52CAA0B370037FCC2 /* XCRemoteSwiftPackageReference "swift-navigation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-navigation";
+			requirement = {
+				kind = exactVersion;
+				version = 2.2.1;
+			};
+		};
+		79FDB4B82CAA8CBB0037FCC2 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = exactVersion;
+				version = 1.17.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -717,10 +725,15 @@
 			package = 79A96AB22CA5C9A300641C8F /* XCRemoteSwiftPackageReference "swift-dependencies" */;
 			productName = Dependencies;
 		};
-		79A96AC22CA9626000641C8F /* Dependencies */ = {
+		79FDB4B62CAA0B430037FCC2 /* SwiftUINavigation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 79A96AB22CA5C9A300641C8F /* XCRemoteSwiftPackageReference "swift-dependencies" */;
-			productName = Dependencies;
+			package = 79FDB4B52CAA0B370037FCC2 /* XCRemoteSwiftPackageReference "swift-navigation" */;
+			productName = SwiftUINavigation;
+		};
+		79FDB4B92CAA8CC30037FCC2 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 79FDB4B82CAA8CBB0037FCC2 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
