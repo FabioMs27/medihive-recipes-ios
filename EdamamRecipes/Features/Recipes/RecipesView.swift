@@ -43,6 +43,7 @@ struct RecipesView: View {
                 }
             }
             .animation(.easeIn, value: viewModel.recipes)
+            .animation(.easeIn, value: viewModel.requestState)
             .padding(.horizontal)
         }
         .navigationTitle("Recipes")
@@ -66,10 +67,15 @@ struct RecipesView: View {
         }
         .task { await viewModel.observeSearchQuery() }
         .task { await viewModel.fetchRecipes() }
+        // MARK: - Navigation
         .sheet(item: $viewModel.route.filterSheet) { viewModel in
             RecipesFilterView(viewModel: viewModel)
                 .presentationDetents([.medium])
         }
+        .navigationDestination(
+            item: $viewModel.route.recipeDetails,
+            destination: RecipeDetailsView.init
+        )
     }
     
     var headerView: some View {
@@ -118,37 +124,41 @@ struct RecipesView: View {
     }
     
     func makeRecipeItemView(_ recipe: Recipes.Output.Item) -> some View {
-        ZStack(alignment: .bottomLeading) {
-            AsyncImage(
-                url: recipe.imageUrl,
-                transaction: Transaction(animation: .easeInOut)
-            ) { phase in
-                switch phase {
-                case .empty, .failure:
-                    Color.gray.opacity(0.3)
-                case .success(let image):
-                    image.resizable()
-                @unknown default:
-                    Color.gray.opacity(0.3)
+        Button {
+            viewModel.showRecipeDetailsScreen(from: recipe.id)
+        } label: {
+            ZStack(alignment: .bottomLeading) {
+                AsyncImage(
+                    url: recipe.imageUrl,
+                    transaction: Transaction(animation: .easeInOut)
+                ) { phase in
+                    switch phase {
+                    case .empty, .failure:
+                        Color.gray.opacity(0.3)
+                    case .success(let image):
+                        image.resizable()
+                    @unknown default:
+                        Color.gray.opacity(0.3)
+                    }
                 }
-            }
-            .aspectRatio(contentMode: .fit)
-            .overlay(gradientOverlay)
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text(recipe.recipeName)
-                    .bold()
-                    .font(.caption)
-                    .foregroundStyle(.white)
-                    .lineLimit(2, reservesSpace: true)
+                .aspectRatio(contentMode: .fit)
+                .overlay(gradientOverlay)
                 
-                Text(recipe.source)
-                    .font(.caption2)
-                    .foregroundColor(.gray)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(recipe.recipeName)
+                        .bold()
+                        .font(.caption)
+                        .foregroundStyle(.white)
+                        .lineLimit(2, reservesSpace: true)
+                    
+                    Text(recipe.source)
+                        .font(.caption2)
+                        .foregroundColor(.gray)
+                }
+                .padding(10)
             }
-            .padding(10)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
         }
-        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }
 

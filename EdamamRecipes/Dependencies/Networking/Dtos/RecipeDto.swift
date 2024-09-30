@@ -97,7 +97,8 @@ extension Recipe {
             label: recipeDto.label,
             imageUrl: URL(string: recipeDto.image),
             source: recipeDto.source,
-            calories: recipeDto.calories
+            calories: recipeDto.calories,
+            details: .none
         )
     }
 }

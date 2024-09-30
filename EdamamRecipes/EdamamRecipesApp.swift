@@ -14,6 +14,7 @@ struct EdamamRecipesApp: App {
             NavigationStack {
                 RecipesView(viewModel: .init())
             }
+            .tint(.black)
         }
     }
 }

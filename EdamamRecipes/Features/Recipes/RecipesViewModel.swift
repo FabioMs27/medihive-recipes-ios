@@ -14,6 +14,7 @@ class RecipesViewModel: ObservableObject {
     @CasePathable
     enum Route {
         case filterSheet(RecipesFilterViewModel)
+        case recipeDetails(RecipeDetailsViewModel)
     }
     
     enum RequestState: Equatable {
@@ -68,6 +69,17 @@ class RecipesViewModel: ObservableObject {
         }
         route = .filterSheet(recipesFilterViewModel)
         bind(recipesFilterViewModel)
+    }
+    
+    func showRecipeDetailsScreen(from recipeId: String) {
+        guard let recipe = recipes.first(where: { $0.id == recipeId }) else {
+            assertionFailure("Tried showing details of invalid recipe")
+            return
+        }
+        let recipeDetailsViewModel = withDependencies(from: self) {
+            RecipeDetailsViewModel.init(recipe: recipe)
+        }
+        route = .recipeDetails(recipeDetailsViewModel)
     }
 }
 

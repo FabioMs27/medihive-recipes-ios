@@ -60,8 +60,10 @@ extension EdamamAPI: APIType {
     
     var paths: String {
         switch self {
-        case .recipes, .recipeDetails:
+        case .recipes:
             return "/api/recipes/v2"
+        case .recipeDetails(let id):
+            return "/api/recipes/v2/\(id)"
         case .recipeSuggestions:
             return "/auto-complete"
         }
@@ -71,8 +73,8 @@ extension EdamamAPI: APIType {
         switch self {
         case .recipes(let request):
             return request.queryItems
-        case .recipeDetails(let id):
-            return [URLQueryItem(name: "id", value: id)]
+        case .recipeDetails:
+            return []
         case .recipeSuggestions(let query):
             return [URLQueryItem(name: "q", value: query)]
         }
