@@ -5,12 +5,13 @@
 //  Created by Fábio Maciel de Sousa on 26.09.2024.
 //
 
+import ComposableArchitecture
 import Dependencies
 import SwiftUI
 import SwiftUINavigation
 
 struct RecipesView: View {
-    @ObservedObject var viewModel: RecipesViewModel
+    @Bindable var store: StoreOf<RecipesFeature>
     @FocusState private var searchFocused: Bool
     @Environment(\.dismissSearch) var dismissSearch
     @Environment(\.isSearching) var isSearching
@@ -25,7 +26,7 @@ struct RecipesView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 headerView
-                switch viewModel.requestState {
+                switch store.requestState {
                 case .inFlight:
                     ProgressView()
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -33,30 +34,30 @@ struct RecipesView: View {
                     Text(description)
                         .bold()
                         .foregroundStyle(.red)
-                case .none where viewModel.recipes.isEmpty:
+                case .none where store.recipes.isEmpty:
                     emptyState
                 case .none:
                     LazyVGrid(columns: collumns, spacing: 16) {
                         ForEach(
-                            viewModel.recipeListItems,
+                            store.recipeListItems,
                             content: makeRecipeItemView
                         )
                     }
                 }
             }
-            .animation(.easeIn, value: viewModel.recipes)
-            .animation(.easeIn, value: viewModel.requestState)
+            .animation(.easeIn, value: store.recipes)
+            .animation(.easeIn, value: store.requestState)
             .padding(.horizontal)
         }
         .navigationTitle("Recipes")
         .searchable(
-            text: $viewModel.searchQuery,
+            text: $store.searchQuery,
             isPresented: $isPresentingSearch,
             prompt: "Find the best recipes!"
         )
         .focused($searchFocused)
         .searchSuggestions {
-            ForEach(viewModel.suggestions, id: \.self) { suggestion in
+            ForEach(store.suggestions, id: \.self) { suggestion in
                 Label(suggestion, systemImage: "bookmark")
                     .searchCompletion(suggestion)
             }
@@ -67,18 +68,18 @@ struct RecipesView: View {
             isPresentingSearch = false
             dismissSearch()
             hideKeyboard()
-            viewModel.clearSuggestions()
-            Task { await viewModel.fetchRecipes() }
+            store.send(.onSearchSubmit)
         }
-        .task { await viewModel.observeSearchQuery() }
-        .task { await viewModel.fetchRecipes() }
+        .task { store.send(.onAppearTask) }
         // MARK: - Navigation
-        .sheet(item: $viewModel.route.filterSheet) { viewModel in
-            RecipesFilterView(viewModel: viewModel)
-                .presentationDetents([.medium])
+        .sheet(isPresented: Binding($store.route.filterSheet)) {
+            RecipesFilterView.init(
+                store: self.store.scope(state: \.recipesFilter, action: \.recipesFilter)
+            )
+            .presentationDetents([.medium])
         }
         .navigationDestination(
-            item: $viewModel.route.recipeDetails,
+            item: $store.route.recipeDetails,
             destination: RecipeDetailsView.init
         )
     }
@@ -88,7 +89,7 @@ struct RecipesView: View {
             Text("Search Result")
             Spacer()
             Button {
-                viewModel.showFilterSheet()
+                store.send(.filterTapped)
             } label: {
                 Image.init(systemName: "slider.horizontal.3")
                     .padding(8)
@@ -105,7 +106,7 @@ struct RecipesView: View {
     var emptyState: some View {
         Text(
             """
-            We couldn't find any matches for "\(viewModel.searchQuery)"
+            We couldn't find any matches for "\(store.searchQuery)"
             Double check your search for any typos or spelling errors - or try a different search term.
             """
         )
@@ -130,7 +131,7 @@ struct RecipesView: View {
     
     func makeRecipeItemView(_ recipe: Recipes.Output.Item) -> some View {
         Button {
-            viewModel.showRecipeDetailsScreen(from: recipe.id)
+            store.send(.recipeTapped(recipe.id))
         } label: {
             ZStack(alignment: .bottomLeading) {
                 AsyncImage(
@@ -170,32 +171,40 @@ struct RecipesView: View {
 
 #Preview("Recipes List") {
     NavigationStack {
-        RecipesView(viewModel: .init())
+        RecipesView.init(
+            store: Store(initialState: RecipesFeature.State()) {
+                RecipesFeature()
+            }
+        )
     }
 }
 
 #Preview("Error State") {
     NavigationStack {
-        RecipesView(
-            viewModel: withDependencies {
-                $0.apiClient.fetchRecipes = { _ in
-                    throw NSError(domain: "Test", code: 500)
+        RecipesView.init(
+            store: Store(
+                initialState: RecipesFeature.State(),
+                reducer: { RecipesFeature() },
+                withDependencies: {
+                    $0.apiClient.fetchRecipes = { _ in
+                        throw NSError(domain: "Test", code: 500)
+                    }
                 }
-            } operation: {
-                .init()
-            }
+            )
         )
     }
 }
 
 #Preview("Empty State") {
     NavigationStack {
-        RecipesView(
-            viewModel: withDependencies {
-                $0.apiClient.fetchRecipes = { _ in [] }
-            } operation: {
-                .init()
-            }
+        RecipesView.init(
+            store: Store(
+                initialState: RecipesFeature.State(),
+                reducer: { RecipesFeature() },
+                withDependencies: {
+                    $0.apiClient.fetchRecipes = { _ in [] }
+                }
+            )
         )
     }
 }

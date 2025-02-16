@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct RecipesFilterView: View {
-    @ObservedObject var viewModel: RecipesFilterViewModel
+    let store: StoreOf<RecipesFilterFeature>
     
     let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 100), spacing: 4, alignment: .topLeading)
@@ -29,9 +30,7 @@ struct RecipesFilterView: View {
                 Spacer()
                 
                 Button {
-                    Task {
-                        await viewModel.applyFilter(viewModel.filterSettings)
-                    }
+                    store.send(.applyFilterTapped)
                 } label: {
                     Text("Done")
                 }
@@ -47,11 +46,11 @@ struct RecipesFilterView: View {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 10) {
                     ForEach(RecipesFilter.Settings.HealthOptions.allCases, id: \.rawValue) { option in
                         Button {
-                            viewModel.toggleFilterOption(.health(option))
+                            store.send(.toggleFilterOptionTapped(.health(option)))
                         } label: {
                             makeFilterOption(
                                 text: option.displayText,
-                                isSelected: viewModel.filterSettings.healthOptions.contains(option)
+                                isSelected: store.filterSettings.healthOptions.contains(option)
                             )
                         }
                     }
@@ -65,11 +64,11 @@ struct RecipesFilterView: View {
                 LazyVGrid(columns: columns, alignment: .leading, spacing: 10) {
                     ForEach(RecipesFilter.Settings.DietOptions.allCases, id: \.rawValue) { option in
                         Button {
-                            viewModel.toggleFilterOption(.diet(option))
+                            store.send(.toggleFilterOptionTapped(.diet(option)))
                         } label: {
                             makeFilterOption(
                                 text: option.displayText,
-                                isSelected: viewModel.filterSettings.dietOptions.contains(option)
+                                isSelected: store.filterSettings.dietOptions.contains(option)
                             )
                         }
                     }
@@ -104,7 +103,11 @@ struct RecipesFilterView: View {
         Text("Recipes")
     }
     .sheet(isPresented: .constant(true)) {
-        RecipesFilterView(viewModel: .init())
-            .presentationDetents([.medium])
+        RecipesFilterView.init(
+            store: Store(initialState: RecipesFilterFeature.State()) {
+                RecipesFilterFeature()
+            }
+        )
+        .presentationDetents([.medium])
     }
 }

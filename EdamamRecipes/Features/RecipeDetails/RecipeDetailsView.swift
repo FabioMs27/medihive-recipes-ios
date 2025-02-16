@@ -7,12 +7,13 @@
 
 import Dependencies
 import SwiftUI
+import ComposableArchitecture
 
 struct RecipeDetailsView: View {
-    @ObservedObject var viewModel: RecipeDetailsViewModel
-    
+    let store: StoreOf<RecipeDetailsFeature>
+
     var output: RecipeDetails.Output {
-        viewModel.output
+        store.state.output
     }
     
     var body: some View {
@@ -41,7 +42,7 @@ struct RecipeDetailsView: View {
         }
         .ignoresSafeArea()
         .task {
-            await viewModel.fetchRecipeDetails()
+            store.send(.onAppearTask)
         }
     }
     
@@ -66,7 +67,7 @@ struct RecipeDetailsView: View {
                     makeNutrientsView(details)
                     
                 } else {
-                    switch viewModel.requestState {
+                    switch store.requestState {
                     case .inFlight:
                         ProgressView()
                             .frame(maxWidth: .infinity, alignment: .center)
@@ -82,8 +83,8 @@ struct RecipeDetailsView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding()
-        .animation(.easeIn, value: viewModel.recipe)
-        .animation(.easeIn, value: viewModel.requestState)
+        .animation(.easeIn, value: store.recipe)
+        .animation(.easeIn, value: store.requestState)
     }
     
     func makeIngredientsView(_ ingredients: [String]) -> some View {
@@ -148,21 +149,32 @@ struct RecipeDetailsView: View {
 }
 
 #Preview("Details") {
-    RecipeDetailsView(viewModel: .init(recipe: .mock(details: .mock)))
+    RecipeDetailsView(
+        store: Store(initialState: RecipeDetailsFeature.State(
+            recipe: .mock(details: .mock)
+        )) {
+            RecipeDetailsFeature()
+        }
+    )
 }
 
 #Preview("Loading") {
-    RecipeDetailsView(viewModel: .init(recipe: .mock()))
+    RecipeDetailsView(
+        store: Store(initialState: RecipeDetailsFeature.State(recipe: .mock())) {
+            RecipeDetailsFeature()
+        }
+    )
 }
 
 #Preview("Error") {
     RecipeDetailsView(
-        viewModel: withDependencies {
+        store: Store(
+            initialState: RecipeDetailsFeature.State(recipe: .mock()),
+            reducer: { RecipeDetailsFeature() }
+        ) {
             $0.apiClient.fetchRecipeDetails = { _ in
                 throw NSError(domain: "Test", code: 500)
             }
-        } operation: {
-            .init(recipe: .mock(), requestState: .error(description: "An Errro Occurred!"))
         }
     )
 }

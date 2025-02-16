@@ -7,14 +7,15 @@
 
 import Dependencies
 import Foundation
-import SwiftUINavigation
+import SwiftNavigation
+import ComposableArchitecture
 
 class RecipesViewModel: ObservableObject {
     
     @CasePathable
     enum Route {
-        case filterSheet(RecipesFilterViewModel)
-        case recipeDetails(RecipeDetailsViewModel)
+        case filterSheet(StoreOf<RecipesFilterFeature>)
+        case recipeDetails(StoreOf<RecipeDetailsFeature>)
     }
     
     enum RequestState: Equatable {
@@ -64,11 +65,14 @@ class RecipesViewModel: ObservableObject {
     }
     
     func showFilterSheet() {
-        let recipesFilterViewModel = withDependencies(from: self) {
-            RecipesFilterViewModel.init(filterSettings: filterSettings)
+        let store = withDependencies(from: self) {
+            StoreOf<RecipesFilterFeature>.init(
+                initialState: RecipesFilterFeature.State()
+            ) {
+                RecipesFilterFeature()
+            }
         }
-        route = .filterSheet(recipesFilterViewModel)
-        bind(recipesFilterViewModel)
+        route = .filterSheet(store)
     }
     
     func showRecipeDetailsScreen(from recipeId: String) {
@@ -76,10 +80,14 @@ class RecipesViewModel: ObservableObject {
             assertionFailure("Tried showing details of invalid recipe")
             return
         }
-        let recipeDetailsViewModel = withDependencies(from: self) {
-            RecipeDetailsViewModel.init(recipe: recipe)
+        let store = withDependencies(from: self) {
+            StoreOf<RecipeDetailsFeature>.init(
+                initialState: RecipeDetailsFeature.State(recipe: recipe)
+            ) {
+                RecipeDetailsFeature()
+            }
         }
-        route = .recipeDetails(recipeDetailsViewModel)
+        route = .recipeDetails(store)
     }
 }
 
